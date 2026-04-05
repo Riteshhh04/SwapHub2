@@ -22,15 +22,17 @@ Production-ready Solidity smart contracts for the SwapHub decentralized exchange
 
 ## Installation
 
+The Hardhat dependencies are installed separately. To set up the contracts development environment:
+
 ```bash
-cd contracts
-npm install
+# Install Hardhat and dependencies globally or in a separate directory
+npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox @openzeppelin/contracts dotenv
 ```
 
 ## Compile Contracts
 
 ```bash
-npm run compile
+npx hardhat compile
 ```
 
 ## Deploy
@@ -39,17 +41,17 @@ npm run compile
 
 1. Start local node:
 ```bash
-npm run node
+npx hardhat node
 ```
 
 2. In another terminal, deploy:
 ```bash
-npm run deploy:local
+npx hardhat run contracts/scripts/deploy.js --network localhost
 ```
 
 ### Testnet (Sepolia)
 
-1. Create `.env` file:
+1. Create `.env` file in the project root:
 ```env
 PRIVATE_KEY=your_private_key
 SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_KEY
@@ -58,7 +60,7 @@ ETHERSCAN_API_KEY=your_etherscan_key
 
 2. Deploy:
 ```bash
-npm run deploy:sepolia
+npx hardhat run contracts/scripts/deploy.js --network sepolia
 ```
 
 ## Contract Architecture
